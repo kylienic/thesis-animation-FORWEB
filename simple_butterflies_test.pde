@@ -65,9 +65,14 @@ void processFunction(PImage input2, PImage output2, int gcont, int gbright){
       //float bright = 255 * ( 2*mouseY / (float)width - 1); // change so range from black to white
       color inColor = input2.pixels[loc];
       
-      int r = (int) red(input2.pixels[loc]);
-      int g = (int) green(input2.pixels[loc]);
-      int b = (int) blue(input2.pixels[loc]);
+      //int r = (int) red(input2.pixels[loc]);
+      //int g = (int) green(input2.pixels[loc]);
+      //int b = (int) blue(input2.pixels[loc]);
+      
+        //here the much faster version (uses bit-shifting) courtesy of dr.mo: http://forum.processing.org/one/topic/increase-contrast-of-an-image.html
+       int r = (inColor >> 16) & 0xFF; //like calling the function red(), but faster
+       int g = (inColor >> 8) & 0xFF;
+       int b = inColor & 0xFF;      
       
       // brightness is linear arithmetic
       // contrast is multiplication, but normalize brightness we first subtract 128, multiply, then add back in. 
@@ -82,7 +87,8 @@ void processFunction(PImage input2, PImage output2, int gcont, int gbright){
       g = g < 0 ? 0 : g > 255 ? 255 : g;
       b = b < 0 ? 0 : b > 255 ? 255 : b;
       
-      output.pixels[loc] = color(r,g,b);
+      //output.pixels[loc] = color(r,g,b);
+      output.pixels[loc]= 0xff000000 | (r << 16) | (g << 8) | b; //this does the same but faster; again, courtesy of dr.mo
     }
   }
  }
