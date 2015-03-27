@@ -3,6 +3,9 @@
 // preload commands for processing.js
 /* @pjs preload="data/butterflies_350x458.jpg"; */
 
+import controlP5.*;
+ControlP5 cp5;
+
 PImage input;       // Source image
 PImage output;  // Destination image
 int gutter_size = 300;
