@@ -6,8 +6,8 @@ PImage output;  // Destination image
 int gutter_size = 300;
 int frame_size = 20;
 int startcont = 2; 
-int gbrightness;
-int gcontrast; 
+int gbrightness=0;
+int gcontrast=1; 
 
 void setup() {
   //size(700+(2*frame_size)+gutter_size, 400+(2*frame_size)+gutter_size); 
