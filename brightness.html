@@ -5,12 +5,12 @@
 <script type="text/javascript">
 var processingInstance;
 function setBrightness(newValue){
-console.log("SLIDER: " + newValue);
+console.log("BRIGHTNESS: " + newValue);
 processingInstance = Processing.getInstanceById("sketch");
 processingInstance.changeBrightness(newValue);
 }
 function setContrast(newValue2){
-console.log("SLIDER: " + newValue2);
+console.log("CONTRAST: " + newValue2);
 processingInstance = Processing.getInstanceById("sketch");
 processingInstance.changeContrast(newValue2);
 }
@@ -22,8 +22,10 @@ processingInstance.changeContrast(newValue2);
 <body>
 <canvas data-processing-sources="simple_butterflies_test.pde" id="sketch"></canvas>
 <div id="interface" style="width: 800px; height: 100px;">
-<input id="Brightness" type="range" class="controlslider" min="0" max="255" value="10" step="1" onChange="setBrightness(this.value)"/>
-<input id="Contrast" type="range" class="controlslider" min="0" max="255" value="10" step="1" onChange="setContrast(this.value)"/>
+Brightness
+<input id="Brightness" type="range" class="controlslider" min="-255" max="255" value="0" step="1" onChange="setBrightness(this.value)"/>
+Contrast
+<input id="Contrast" type="range" class="controlslider" min="0" max="100" value="50" step="1" onChange="setContrast(this.value)"/>
 	<!-- calls updateColor with the value of the slider whenever it is changed. -->
 </div>
 </body>
